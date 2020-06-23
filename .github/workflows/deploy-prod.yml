@@ -33,9 +33,11 @@ jobs:
         with:
           name: webpack artifacts
           path: public
+        
+      - name: Testing
+        run: echo ${{ secrets.AWS_ACCESS_KEY }}
 
       - name: Deploy to AWS
-        run: echo ${{ secrets.AWS_ACCESS_KEY }}
         uses:  github/deploy-nodejs@master
         env:
           AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
